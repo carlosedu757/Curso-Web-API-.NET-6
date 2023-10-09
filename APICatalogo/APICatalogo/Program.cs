@@ -1,4 +1,5 @@
 using APICatalogo.Context;
+using APICatalogo.Extensions;
 using APICatalogo.Filter;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -34,6 +35,9 @@ namespace APICatalogo
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            
+            // Add middleware of error handling (Created by myself)
+            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
 
