@@ -1,4 +1,5 @@
 using APICatalogo.Context;
+using APICatalogo.Filter;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -17,6 +18,7 @@ namespace APICatalogo
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ApiLoggingFilter>();
 
             string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
