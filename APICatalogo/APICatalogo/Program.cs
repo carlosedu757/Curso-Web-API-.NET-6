@@ -1,6 +1,7 @@
 using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filter;
+using APICatalogo.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -26,6 +27,9 @@ namespace APICatalogo
             builder.Services.AddDbContext<AppDbContext>(options =>
                                 options.UseMySql(mySqlConnection,
                                 ServerVersion.AutoDetect(mySqlConnection)));
+
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
