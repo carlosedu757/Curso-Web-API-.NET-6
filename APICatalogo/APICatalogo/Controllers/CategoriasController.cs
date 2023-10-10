@@ -10,10 +10,11 @@ namespace APICatalogo.Controllers
     public class CategoriasController : ControllerBase
     {
         private readonly AppDbContext _context;
-
-        public CategoriasController(AppDbContext context)
+        private readonly ILogger _logger;
+        public CategoriasController(AppDbContext context, ILogger<CategoriasController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet("produtos")]
