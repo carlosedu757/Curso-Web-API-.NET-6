@@ -37,9 +37,9 @@ namespace APICatalogo.Controllers
                 var categoriaDTO = _mapper.Map<List<CategoriaDTO>>(categoria);
                 return categoriaDTO;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema ao tratar a sua solicitação");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um problema ao tratar a sua solicitação. {ex}");
             }
         }
 
