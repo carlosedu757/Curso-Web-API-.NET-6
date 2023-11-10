@@ -84,6 +84,14 @@ namespace APICatalogo
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("PermitirApiRequest",
+                    builder => builder.WithOrigins("https://www.apirequest.io/")
+                                        .WithMethods("GET")
+                );      
+            });
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -109,6 +117,12 @@ namespace APICatalogo
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            //app.UseCors(opt => opt
+            //                   .WithOrigins("https://www.apirequest.io/")
+            //                   .WithMethods("GET"));
+
+            app.UseCors();
 
             app.MapControllers();
 
